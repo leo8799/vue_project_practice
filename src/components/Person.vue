@@ -1,16 +1,16 @@
 <template>
   <div class="person">
-    姓： <input type="text" v-model="firstName"> <br>
-    名： <input type="text" v-model="lastName"> <br>
+    姓： <input type="text" v-model="firstName.value"> <br>
+    名： <input type="text" v-model="lastName.value"> <br>
     全名： <span>{{fullName}}</span> <br>
     <button @click="changeFullName">改變fullname</button> <br>
   </div>
 </template>
 
 <script setup name="Person" lang="ts">
-  import { ref, computed } from 'vue';
-  let firstName = ref('劉')
-  let lastName = ref('耀凱')
+  import { reactive, computed } from 'vue';
+  let firstName = reactive({value: '劉'})
+  let lastName = reactive({value: '耀凱'})
 
   let fullName = computed({
     get(){
@@ -23,7 +23,7 @@
     }
   })
   function changeFullName(){
-    fullName.value = '陳-翠連'
+    fullName.value = 'liu-yaokai'
   }
 </script>
 
