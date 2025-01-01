@@ -26,6 +26,7 @@
     fullName.value = 'liu-yaokai'
     console.log(firstName);
     console.log(lastName);
+    console.log("test create new origin branch");
   }
 </script>
 
