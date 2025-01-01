@@ -24,11 +24,10 @@
   })
   function changeFullName(){
     fullName.value = 'liu-yaokai'
+    console.log(firstName);
+    console.log(lastName);
   }
 </script>
-
-
-
 
 <style>
   .person {
