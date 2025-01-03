@@ -2,16 +2,18 @@
   <div class="app">
     <h1>你好啊！</h1>
     <!-- <Person></Person> -->
-    <watch></watch>
+    <!-- <watch></watch> -->
+    <watchEffect></watchEffect>
   </div>
 </template>
 
 <script lang="ts">
   import Person from './components/Person.vue';
   import watch from './components/watch.vue';
+  import watchEffect from './components/watchEffect.vue';
   export default{
     name: 'App',
-    components: {Person, watch}
+    components: {Person, watch, watchEffect}
   }
 </script>
 
