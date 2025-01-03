@@ -1,12 +1,13 @@
 <template>
   <div class="app">
     <h1 ref="city">你好啊！</h1>
-    <button @click="showLog">展示標簽ref屬性為city和son的父組件的文本内容</button>
+    <!-- <button @click="showLog">展示標簽ref屬性為city和son的父組件的文本内容</button> -->
     <!-- <Person></Person> -->
     <!-- <watch></watch> -->
     <!-- <watchEffect></watchEffect> -->
-    <h2>ref屬性應用在vue組件標簽上，則展示組件實例對象的内容</h2>
-    <RefProperties ref="son"></RefProperties>
+    <!-- <h2>ref屬性應用在vue組件標簽上，則展示組件實例對象的内容</h2>
+    <RefProperties ref="son"></RefProperties> -->
+    <TS_practice></TS_practice>
   </div>
 </template>
 
@@ -16,6 +17,7 @@
   import watchEffect from './components/watchEffect.vue';
   import RefProperties from './components/refProperties.vue';
   import { ref } from 'vue';
+  import TS_practice from './components/TS_practice.vue';
 
   let city = ref()
   let son = ref()
