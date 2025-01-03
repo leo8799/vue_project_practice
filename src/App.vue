@@ -1,29 +1,25 @@
 <template>
   <div class="app">
-    <h1 ref="city">你好啊！</h1>
-    <!-- <button @click="showLog">展示標簽ref屬性為city和son的父組件的文本内容</button> -->
-    <!-- <Person></Person> -->
-    <!-- <watch></watch> -->
-    <!-- <watchEffect></watchEffect> -->
-    <!-- <h2>ref屬性應用在vue組件標簽上，則展示組件實例對象的内容</h2>
-    <RefProperties ref="son"></RefProperties> -->
-    <TS_practice></TS_practice>
+    <!-- 加:則後面的字符串内容會轉爲標識符 -->
+    <!-- <h2 a="1+1" :b="1+1" c="x" :d="x">該標簽有四個props（屬性）</h2> -->
+    <!-- vue組件標簽的props屬性會傳遞給子組件，子組件可以編寫對應代碼覺得要不要接受，以及限制傳遞的數據類型 -->
+    <props a="哈哈" :list="personList"></props>
   </div>
 </template>
 
 <script lang="ts" setup name="App">
-  import Person from './components/Person.vue';
-  import watch from './components/watch.vue';
-  import watchEffect from './components/watchEffect.vue';
-  import RefProperties from './components/refProperties.vue';
-  import { ref } from 'vue';
-  import TS_practice from './components/TS_practice.vue';
+  import { reactive } from 'vue';
+  import { type Persons } from './types';
+  import props from './components/props.vue';
 
-  let city = ref()
-  let son = ref()
-  function showLog(){
-    console.log(city.value, son.value)
-  }
+  let x = 9
+
+  // 標識符+<???>代表泛型，限制了數據類型
+  let personList = reactive<Persons>([
+  {id:'001', name: 'liuyaokai', age: 18},
+  {id:'002', name: 'liuyaokai', age: 18},
+  {id:'003', name: 'liuyaokai', age: 18}
+  ])
 </script>
 
 <style>
