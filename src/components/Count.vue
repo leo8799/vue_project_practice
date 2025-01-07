@@ -1,6 +1,7 @@
 <template>
   <div class="count">
     <h2>當前求和為：{{ countStore.sum }}</h2>
+    <h3>歡迎來到：{{ countStore.school }} 坐落於：{{ countStore.address }}</h3>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -21,7 +22,18 @@
   let n = ref(1)
 
   function add(){
-    countStore.sum += n.value
+    // 第一種方法
+    // countStore.sum += n.value
+
+    // 第二種方法 批量修改只有一次事件，適合數據較多的時候使用，性能較好
+    // countStore.$patch({
+    //   sum: 100,
+    //   school: 'national central university',
+    //   address: 'taoyuan zhongli zhongda Road.'
+    // })
+
+    // 第三種方法 action方法
+    countStore.add(n.value, 'national central university', 'taoyuan zhongli zhongda Road.')
   }
   function minus(){
     countStore.sum -= n.value
