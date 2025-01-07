@@ -3,9 +3,12 @@
     <h2>Vue路由測試</h2>
     <!-- 導航區 -->
     <div class="navigate">
+      <!-- 第一種寫法：路徑指定 -->
       <RouterLink to="/home" active-class="active">首頁</RouterLink>
-      <RouterLink to="/news" active-class="active">新聞</RouterLink>
-      <RouterLink to="/about" active-class="active">關於</RouterLink>
+      <!-- 第二種寫法：路由名字指定 -->
+      <RouterLink :to="{name:'News'}" active-class="active">新聞</RouterLink>
+      <!-- 第三種寫法：路徑指定（對象包裹） -->
+      <RouterLink :to="{path:'/about'}" active-class="active">關於</RouterLink>
     </div>
     <!-- 展示區 -->
     <div class="main-content">
