@@ -3,14 +3,15 @@
     <!-- 導航區 -->
     <ul>
       <li v-for="news in newsList" :key="news.id">
+        <!-- params傳參不能傳對象和數組 -->
         <!-- 第一種寫法 -->
-        <!-- <RouterLink :to="`/news/detail?id=${news.id}&title=${news.title}&content=${news.content}`">{{ news.title }}</RouterLink> -->
+        <!-- <RouterLink :to="`/news/detail/${news.id}/${news.title}/${news.content}`">{{ news.title }}</RouterLink> -->
 
         <!-- 第二種寫法 -->
-        <!-- <RouterLink
+        <RouterLink
           :to="{
-            path:'/news/detail',
-            query:{
+            name:'Detail',
+            params:{
               id:news.id,
               title:news.title,
               content:news.content
@@ -18,10 +19,10 @@
           }"
         >
           {{ news.title }}
-        </RouterLink> -->
+        </RouterLink>
 
         <!-- 第三種寫法 -->
-        <RouterLink
+        <!-- <RouterLink
           :to="{
             name:'Detail',
             query:{
@@ -32,7 +33,7 @@
           }"
         >
           {{ news.title }}
-        </RouterLink>
+        </RouterLink> -->
       </li>
     </ul>
     <div class="news-content">
@@ -46,8 +47,8 @@
 
   const newsList = reactive([
     {id: '001', title: '2025CVPR！！！', content: '資訊工程學院研究成果登上2025CVPR'},
-    {id: '002', title: '碩士甄試招生開始', content: '10/1號開始！'},
-    {id: '003', title: '碩士考試招生開始', content: '12/1號開始報名！'},
+    {id: '002', title: '碩士甄試招生開始', content: '10月1號開始！'},
+    {id: '003', title: '碩士考試招生開始', content: '12月1號開始報名！'},
     {id: '004', title: '畢業典禮開始！！', content: '畢業快樂！！！！'},
   ])
 </script>

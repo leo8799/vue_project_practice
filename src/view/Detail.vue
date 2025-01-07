@@ -1,16 +1,16 @@
 <template>
   <ul class="news-list">
-    <li>編號:{{ query.id }}</li>
-    <li>標題:{{ query.title }}</li>
-    <li>内容:{{ query.content }}</li>
+    <li>編號:{{ params.id }}</li>
+    <li>標題:{{ params.title }}</li>
+    <li>内容:{{ params.content }}</li>
   </ul>
 </template>
 
 <script setup lang="ts"  name="Detail">
   import { toRefs } from 'vue';
-import { useRoute } from 'vue-router';
+  import { useRoute } from 'vue-router';
   const route = useRoute()
-  const {query} = toRefs(route)
+  const {params} = toRefs(route)
 </script>
 
 <style scoped>
