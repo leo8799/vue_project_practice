@@ -1,16 +1,55 @@
 <template>
   <div class="news">
+    <!-- 導航區 -->
     <ul>
-      <li><a href="">新聞001</a></li>
-      <li><a href="">新聞002</a></li>
-      <li><a href="">新聞003</a></li>
-      <li><a href="">新聞004</a></li>
+      <li v-for="news in newsList" :key="news.id">
+        <!-- 第一種寫法 -->
+        <!-- <RouterLink :to="`/news/detail?id=${news.id}&title=${news.title}&content=${news.content}`">{{ news.title }}</RouterLink> -->
+
+        <!-- 第二種寫法 -->
+        <!-- <RouterLink
+          :to="{
+            path:'/news/detail',
+            query:{
+              id:news.id,
+              title:news.title,
+              content:news.content
+            }
+          }"
+        >
+          {{ news.title }}
+        </RouterLink> -->
+
+        <!-- 第三種寫法 -->
+        <RouterLink
+          :to="{
+            name:'Detail',
+            query:{
+              id:news.id,
+              title:news.title,
+              content:news.content
+            }
+          }"
+        >
+          {{ news.title }}
+        </RouterLink>
+      </li>
     </ul>
+    <div class="news-content">
+      <RouterView></RouterView>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts" name="News">
+  import { reactive } from 'vue';
 
+  const newsList = reactive([
+    {id: '001', title: '2025CVPR！！！', content: '資訊工程學院研究成果登上2025CVPR'},
+    {id: '002', title: '碩士甄試招生開始', content: '10/1號開始！'},
+    {id: '003', title: '碩士考試招生開始', content: '12/1號開始報名！'},
+    {id: '004', title: '畢業典禮開始！！', content: '畢業快樂！！！！'},
+  ])
 </script>
 
 <style scoped>

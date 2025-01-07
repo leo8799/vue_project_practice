@@ -6,6 +6,7 @@ import { createRouter, createWebHashHistory, createWebHistory } from "vue-router
 import Home from "@/view/Home.vue"
 import News from "@/view/News.vue"
 import About from "@/view/About.vue"
+import Detail from "@/view/Detail.vue";
 
 const router = createRouter({
   // 路由器的工作模式分爲history模式、hash模式
@@ -24,6 +25,13 @@ const router = createRouter({
       name: "News",
       path: "/news",
       component: News,
+      children:[
+        {
+          name:"Detail",
+          path:"detail",
+          component:Detail
+        }
+      ]
     },
     {
       name: "About",
