@@ -29,7 +29,23 @@ const router = createRouter({
         {
           name:"Detail",
           path:"detail/:id/:title/:content?", //加?代表這個參數是可選的
-          component:Detail
+          component:Detail,
+
+          // 第一種寫法，將路由收到的所有【params】參數作爲props傳個路由組件
+          // props: true
+
+          // 第二種寫法，函數寫法可以自己決定將什麽作爲props傳個路由組件
+          props(route) {
+            return route.params
+            // return route.query
+          },
+
+          // 第三種寫法，對象寫法，少用，因爲參數是固定的，不能動態改變
+          // props:{
+          //   id:'000',
+          //   title:'test',
+          //   content:'test'
+          // }
         }
       ]
     },

@@ -1,16 +1,13 @@
 <template>
   <ul class="news-list">
-    <li>編號:{{ params.id }}</li>
-    <li>標題:{{ params.title }}</li>
-    <li>内容:{{ params.content }}</li>
+    <li>編號:{{ id }}</li>
+    <li>標題:{{ title }}</li>
+    <li>内容:{{ content }}</li>
   </ul>
 </template>
 
 <script setup lang="ts"  name="Detail">
-  import { toRefs } from 'vue';
-  import { useRoute } from 'vue-router';
-  const route = useRoute()
-  const {params} = toRefs(route)
+  defineProps(['id', 'title', 'content'])
 </script>
 
 <style scoped>

@@ -8,6 +8,7 @@
         <!-- <RouterLink :to="`/news/detail/${news.id}/${news.title}/${news.content}`">{{ news.title }}</RouterLink> -->
 
         <!-- 第二種寫法 -->
+        <button @click="showNewsDetail(news)">按我跳轉</button>
         <RouterLink
           :to="{
             name:'Detail',
@@ -44,6 +45,9 @@
 
 <script setup lang="ts" name="News">
   import { reactive } from 'vue';
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter()
 
   const newsList = reactive([
     {id: '001', title: '2025CVPR！！！', content: '資訊工程學院研究成果登上2025CVPR'},
@@ -51,6 +55,23 @@
     {id: '003', title: '碩士考試招生開始', content: '12月1號開始報名！'},
     {id: '004', title: '畢業典禮開始！！', content: '畢業快樂！！！！'},
   ])
+
+  interface NewsInter{
+    id:string,
+    title:string,
+    content:string
+  }
+
+  function showNewsDetail(news:NewsInter){
+    router.push({
+      name:'Detail',
+      params:{
+        id:news.id,
+        title:news.title,
+        content:news.content
+      }
+    })
+  }
 </script>
 
 <style scoped>
