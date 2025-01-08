@@ -2,21 +2,32 @@
   <div class="major">
     <button @click="getMajor">點我增加科系</button>
     <ul>
-      <li v-for="major in majorStore.majorList" :key="major.id">{{ major.name }}</li>
+      <li v-for="major in majorList" :key="major.id">{{ major.name }}</li>
     </ul>
   </div>
 </template>
 
 <script lang="ts" setup name="Major">
-  import { nanoid } from 'nanoid';
   import { useMajorStore } from '@/store/Major';
+  import { storeToRefs } from 'pinia';
+  // 組合式寫法
+  const {majorList, getMajor, $subscribe} = useMajorStore()
 
-  const majorStore = useMajorStore()
+  $subscribe((mustate, state)=>{
+    localStorage.setItem('majorList', JSON.stringify(state.majorList))
+  })
 
-  function getMajor(){
-    let obj = {id: nanoid(), name:'測試'}
-    majorStore.majorList.unshift(obj)
-  }
+  // 選項式寫法
+  // let majorStore = useMajorStore()
+  // let {majorList} = storeToRefs(majorStore)
+  // $subscribe 類似watch的用法，以下代碼實現功能是當state裏的數據改變時，備份數據到localStorage
+  // majorStore.$subscribe((mustate, state)=>{
+  //   localStorage.setItem('majorList', JSON.stringify(state.majorList))
+  // })
+
+  // function getMajor(){
+  //   majorStore.getMajor()
+  // }
 </script>
 
 <style lang="css" scoped>

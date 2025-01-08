@@ -1,7 +1,7 @@
 <template>
   <div class="count">
-    <h2>當前求和為：{{ countStore.sum }}</h2>
-    <h3>歡迎來到：{{ countStore.school }} 坐落於：{{ countStore.address }}</h3>
+    <h2>當前求和為：{{ sum }} 放大10倍 {{ bigSum }}</h2>
+    <h3>歡迎來到：{{ school }} 坐落於：{{ address }}  大寫：{{ upperSchool }}</h3>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -14,9 +14,13 @@
 
 <script lang="ts" setup name="Count">
   import { useCountStore } from '@/store/Count';
+  import { storeToRefs } from 'pinia';
   import { ref } from 'vue';
 
+
   const countStore = useCountStore()
+  // storeToRefs 只會包裹store裏面的數據（state）
+  let {sum, school, address, bigSum, upperSchool} = storeToRefs(countStore)
 
 
   let n = ref(1)

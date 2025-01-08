@@ -16,4 +16,13 @@ export const useCountStore = defineStore('Count', {
       address: '桃園市中壢區中大路'
     }
   },
+  // 類似計算屬性
+  getters:{
+    bigSum(state){
+      return state.sum * 10
+    },
+    upperSchool(): string{
+      return this.school.toUpperCase()
+    }
+  }
 })
