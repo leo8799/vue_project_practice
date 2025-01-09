@@ -1,18 +1,37 @@
 <template>
-  <div class="title">
-    <Count></Count>
-    <br>
-    <Major></Major>
+  <div class="container-fluid wraper">
+    <h1 class="title">
+      Vue3 組件通信
+    </h1>
+    <hr>
+    <div class="row">
+      <div class="col-xs-3 col-md-3 col-lg-3 col-xl-3">
+        <!-- 導航區 -->
+        <RouterLink active-class="active" class="list-group-item" to="/props">1.Props</RouterLink>
+        <RouterLink active-class="active" class="list-group-item" to="/event">2.Event</RouterLink>
+        <RouterLink active-class="active" class="list-group-item" to="/mitt">3.Mitt</RouterLink>
+        <RouterLink active-class="active" class="list-group-item" to="/model">4.Model</RouterLink>
+        <RouterLink active-class="active" class="list-group-item" to="/attrs">5.Attrs</RouterLink>
+        <RouterLink active-class="active" class="list-group-item" to="/ref-parent">6.Ref</RouterLink>
+        <RouterLink active-class="active" class="list-group-item" to="/provide-inject">7.Provide</RouterLink>
+        <RouterLink active-class="active" class="list-group-item" to="/pinia">8.Pinia</RouterLink>
+        <RouterLink active-class="active" class="list-group-item" to="/slot">9.Slot</RouterLink>
+      </div>
+      <div class="col-xs-9 col-md-9 col-lg-9 col-xl-9">
+        <div class="panel-body">
+          <!-- 展位一個展示區 -->
+          <RouterView></RouterView>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup name="App">
-  import Count from './components/Count.vue';
-  import Major from './components/Major.vue';
 
 </script>
 
-<style>
+<style scoped>
   .title {
     text-align: center;
     word-spacing: 5px;

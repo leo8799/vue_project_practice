@@ -1,64 +1,52 @@
-// 創建一個路由器，並暴露出去
+import { createRouter, createWebHistory } from 'vue-router'
+import Props from '@/view/comp_communicate/01_props/Father.vue'
+import Event from "@/view/comp_communicate/02_custom-event/Father.vue";
+import Bus from '@/view/comp_communicate/03_mitt/Father.vue'
+import Model from '@/view/comp_communicate/04_v-model/Father.vue'
+import AttrsListeners from '@/view/comp_communicate/05_$attrs/Father.vue'
+import RefChildrenParent from '@/view/comp_communicate/06_$refs-$parent/Father.vue'
+import ProvideInject from '@/view/comp_communicate/07_provide-inject/Father.vue'
+import Pinia from '@/view/comp_communicate/08_pinia/Father.vue'
+import Slot from '@/view/comp_communicate/09_slot/Father.vue'
 
-// 第一步：引入createRouter
-import { createRouter, createWebHashHistory, createWebHistory } from "vue-router";
-// 引入組件（路由組件）
-import Home from "@/view/Home.vue"
-import News from "@/view/News.vue"
-import About from "@/view/About.vue"
-import Detail from "@/view/Detail.vue";
-
-const router = createRouter({
-  // 路由器的工作模式分爲history模式、hash模式
-  // history的url不帶#但是需要後端配合路徑
-  // hash的url帶#號但是不需要後端配合路徑，且在SEO方面優化較差
-  // history: createWebHashHistory(), hash模式
-  history: createWebHistory(),
-  routes: [
-    //路由規則
-    {
-      name: "Home",
-      path: "/home",
-      component: Home,
-    },
-    {
-      name: "News",
-      path: "/news",
-      component: News,
-      children:[
-        {
-          name:"Detail",
-          path:"detail/:id/:title/:content?", //加?代表這個參數是可選的
-          component:Detail,
-
-          // 第一種寫法，將路由收到的所有【params】參數作爲props傳個路由組件
-          // props: true
-
-          // 第二種寫法，函數寫法可以自己決定將什麽作爲props傳個路由組件
-          props(route) {
-            return route.params
-            // return route.query
-          },
-
-          // 第三種寫法，對象寫法，少用，因爲參數是固定的，不能動態改變
-          // props:{
-          //   id:'000',
-          //   title:'test',
-          //   content:'test'
-          // }
-        }
-      ]
-    },
-    {
-      name: "About",
-      path: "/about",
-      component: About,
-    },
-    {
-      path:'/',
-      redirect:'Home' // 重定向，將一個路徑指向另一個路徑
-    }
-  ],
-});
-
-export default router
+export default createRouter({
+	history: createWebHistory(),
+	routes: [
+		{
+			path: '/props',
+			component: Props
+		},
+		{
+			path: '/event',
+			component: Event
+		},
+		{
+			path: '/mitt',
+			component: Bus
+		},
+		{
+			path: '/model',
+			component: Model
+		},
+		{
+			path: '/attrs',
+			component: AttrsListeners
+		},
+		{
+			path: '/ref-parent',
+			component: RefChildrenParent
+		},
+		{
+			path: '/provide-inject',
+			component: ProvideInject
+		},
+		{
+			path: '/pinia',
+			component: Pinia
+		},
+		{
+			path: '/slot',
+			component: Slot
+		},
+	]
+})

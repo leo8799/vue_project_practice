@@ -4,7 +4,8 @@ import App from './App.vue'
 import router from './router'
 // 引入pinia
 import { createPinia } from 'pinia'
-
+// 引入mitt
+import mitt from 'mitt'
 
 const app = createApp(App)
 const pinia = createPinia()
